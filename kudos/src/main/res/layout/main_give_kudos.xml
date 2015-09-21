@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/string_give_kudos_by_email"
+            android:id="@+id/give_kudos_email_label"
+            android:textSize="20sp"
+            android:layout_marginTop="125dp"
+            android:layout_alignParentTop="true" android:layout_centerHorizontal="true"/>
+    <EditText
+            android:layout_width="match_parent"
+            android:layout_height="40sp"
+            android:inputType="textEmailAddress"
+            android:layout_marginTop="15sp"
+            android:ems="10"
+            android:layout_marginLeft="5sp"
+            android:background="@drawable/shapes"
+            android:hint="@string/string_hint_type_email"
+            android:id="@+id/give_kudos_email_input"
+            android:layout_below="@+id/give_kudos_email_label"
+            android:layout_alignEnd="@+id/give_kudos_button"/>
+    <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/string_give"
+            android:id="@+id/give_kudos_button"
+            android:onClick="giveKudos"
+            android:layout_below="@+id/give_kudos_email_input"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="96dp"/>
+    <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="40sp"
+            android:inputType="numberSigned"
+            android:ems="10"
+            android:hint="@string/string_amount"
+            android:layout_marginLeft="15sp"
+            android:layout_marginRight="15sp"
+            android:padding="5sp"
+            android:background="@drawable/shapes"
+            android:id="@+id/give_kudos_amount_input"
+            android:layout_above="@+id/give_kudos_button"
+            android:layout_alignParentEnd="true"
+            android:layout_toEndOf="@+id/give_kudos_email_input"/>
+    <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="40sp"
+            android:id="@+id/give_kudos_message_input"
+            android:layout_below="@+id/give_kudos_email_input"
+            android:layout_marginTop="20sp"
+            android:layout_marginLeft="60sp"
+            android:background="@drawable/shapes"
+            android:hint="@string/string_give_kudos_message_hint"/>
+
+</RelativeLayout>

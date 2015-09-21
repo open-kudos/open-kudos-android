@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.Toolbar
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:background="#87A527"
+        android:elevation="2dp"
+        android:theme="@style/Theme.AppCompat.Light"
+        xmlns:android="http://schemas.android.com/apk/res/android">
+
+        <ImageView
+                android:layout_width="60sp"
+                android:layout_height="60sp"
+                android:layout_marginLeft="2sp"
+                android:src="@drawable/logo"
+        />
+
+        <TextView android:layout_width="250sp"
+                  android:layout_height="50sp"
+                  android:layout_marginTop="20sp"
+                  android:layout_marginLeft="40sp"
+                  android:textColor="#7F7F7F"
+                  android:textSize="25sp"
+                  android:text="@string/string_different"/>
+
+</android.support.v7.widget.Toolbar>

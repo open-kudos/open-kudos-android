@@ -11,11 +11,11 @@ import java.util.concurrent.ExecutionException;
  */
 public class AuthenticateActions extends ConnectionService {
 
-    private static final String LOGIN_CALL_ADDRESS="/login?";
+    private static final String LOGIN_CALL_ADDRESS="/login";
     private static final String LOGOUT_CALL_ADDRESS="/logout";
 
-    private static final String EMAIL_TAG="email=";
-    private static final String PASSWORD_TAG="&password=";
+    private static final String EMAIL_TAG="email";
+    private static final String PASSWORD_TAG="password";
 
     private static final String REGISTER_CALL_ADDRESS="/register?";
     private static final String NAME_TAG = "&name=";
@@ -23,8 +23,9 @@ public class AuthenticateActions extends ConnectionService {
     private static final String CONFIRM_PASSWORD_TAG = "&confirmPassword=";
 
     public static Response login(String email, String password) throws IOException, ExecutionException, InterruptedException {
-        String url = LOGIN_CALL_ADDRESS+EMAIL_TAG + email + PASSWORD_TAG + password;
-        return getJSONPost(url);
+        addParam(EMAIL_TAG, email);
+        addParam(PASSWORD_TAG, password);
+        return getJSONPost(LOGIN_CALL_ADDRESS);
     }
 
     public static Response register(String email, String password, String confirmPassword) throws ExecutionException, InterruptedException {

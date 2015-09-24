@@ -5,13 +5,16 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
+
 import layout.adapter.LoginViewPagerAdapter;
+
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+
 import layout.SlidingTabLayout;
 import open.kudos.R;
 import storage.SecurePreferences;
@@ -65,6 +68,11 @@ public class AuthenticationScreen extends ActionBarActivity {
         if (rememberMeCheck == null) {
             rememberMeCheck = (CheckBox) findViewById(R.id.remember_me_flag);
         }
+        // Debug
+        loginEmailInput.setText("oleg@sviderskij.lt");
+        loginPasswordInput.setText("la482361");
+
+
         final String email = loginEmailInput.getText().toString();
         final String password = loginPasswordInput.getText().toString();
 
@@ -86,10 +94,10 @@ public class AuthenticationScreen extends ActionBarActivity {
             }
             Toast.makeText(this, response.getCode() + "", Toast.LENGTH_SHORT).show();
         } catch (IOException e) {
-            Toast.makeText(AuthenticationScreen.this, e.getMessage(), Toast.LENGTH_LONG).show();
         } catch (InterruptedException e) {
             Toast.makeText(AuthenticationScreen.this, e.getMessage(), Toast.LENGTH_LONG).show();
         } catch (ExecutionException e) {
+            Toast.makeText(AuthenticationScreen.this, e.getMessage(), Toast.LENGTH_LONG).show();
             Toast.makeText(AuthenticationScreen.this, e.getMessage(), Toast.LENGTH_LONG).show();
         }
 
@@ -102,14 +110,14 @@ public class AuthenticationScreen extends ActionBarActivity {
     }
 
     public void register(View v) throws ExecutionException, InterruptedException {
-        if(registerEmailInput == null){
-            registerEmailInput = (EditText)findViewById(R.id.register_email_input);
+        if (registerEmailInput == null) {
+            registerEmailInput = (EditText) findViewById(R.id.register_email_input);
         }
-        if(registerPasswordInput == null){
-            registerPasswordInput = (EditText)findViewById(R.id.register_password_input);
+        if (registerPasswordInput == null) {
+            registerPasswordInput = (EditText) findViewById(R.id.register_password_input);
         }
-        if(registerConfirmPasswordInput == null){
-            registerConfirmPasswordInput = (EditText)findViewById(R.id.register_confirm_password_input);
+        if (registerConfirmPasswordInput == null) {
+            registerConfirmPasswordInput = (EditText) findViewById(R.id.register_confirm_password_input);
         }
         String email = registerEmailInput.getText().toString();
         String password = registerPasswordInput.getText().toString();
@@ -117,25 +125,25 @@ public class AuthenticationScreen extends ActionBarActivity {
 
         validateRegistration(email, password, confirmPassword);
 
-        Response response = AuthenticateActions.register(email,password,confirmPassword);
-        Toast.makeText(this,response.getCode()+" "+response.getMessage(),Toast.LENGTH_LONG).show();
-        if(response.getCode() == 200){
-            Toast.makeText(this,"Registration completed. Now you can log in",Toast.LENGTH_LONG).show();
+        Response response = AuthenticateActions.register(email, password, confirmPassword);
+        Toast.makeText(this, response.getCode() + " " + response.getMessage(), Toast.LENGTH_LONG).show();
+        if (response.getCode() == 200) {
+            Toast.makeText(this, "Registration completed. Now you can log in", Toast.LENGTH_LONG).show();
         }
     }
 
-    private void validateRegistration(String email, String password, String confirmPassword){
-        if(email.length() == 0){
-            Toast.makeText(this,"please enter your email",Toast.LENGTH_LONG).show();
+    private void validateRegistration(String email, String password, String confirmPassword) {
+        if (email.length() == 0) {
+            Toast.makeText(this, "please enter your email", Toast.LENGTH_LONG).show();
         }
-        if(password.length() == 0){
-            Toast.makeText(this,"please enter your password",Toast.LENGTH_LONG).show();
+        if (password.length() == 0) {
+            Toast.makeText(this, "please enter your password", Toast.LENGTH_LONG).show();
         }
-        if(confirmPassword.length() == 0){
-            Toast.makeText(this,"please enter confirmPassword",Toast.LENGTH_LONG).show();
+        if (confirmPassword.length() == 0) {
+            Toast.makeText(this, "please enter confirmPassword", Toast.LENGTH_LONG).show();
         }
-        if(confirmPassword.length() > 0 && password.length() > 0 && !confirmPassword.equals(password)){
-            Toast.makeText(this,"passwords do not match",Toast.LENGTH_LONG).show();
+        if (confirmPassword.length() > 0 && password.length() > 0 && !confirmPassword.equals(password)) {
+            Toast.makeText(this, "passwords do not match", Toast.LENGTH_LONG).show();
         }
     }
 
